@@ -1,5 +1,12 @@
 var gifs = ["test button"];
 
+function displayGif() {
+
+    var userGif =  $(this).attr("data-name")
+    console.log(userGif);
+
+};
+
 // Function for displaying gif buttons
 function renderButtons() {
 
@@ -23,7 +30,6 @@ function renderButtons() {
     }
 }
 
-
 // This function handles events where the add gif button is clicked
 $("#add-gif").on("click", function(event) {
 
@@ -39,6 +45,9 @@ $("#add-gif").on("click", function(event) {
     renderButtons();
 
 });
+
+// Adding click event listeners to all elements with a class of "movie"
+$(document).on("click", ".gif", displayGif);
 
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
