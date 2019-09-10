@@ -12,7 +12,47 @@ function displayGif() {
       method: "GET"
     }).then(function(response) {
       console.log(response);
+      var results = response.data;
 
+      // for loop adding gifs and ratings to html divs
+      for (var i = 0; i < results.length; i++) {
+
+        var gifDiv = $("<div>");
+
+        var rating = results[i].rating;
+        var p = $("<p>").text("Rating: " + rating);
+
+        var gifImage = $('<img>');
+
+        gifImage.attr("src", results[i].images.fixed_height_still.url);
+        gifImage.attr("data-still", results[i].images.fixed_height_still.url)
+        gifImage.attr("data-animate", results[i].images.fixed_height.url)
+        gifImage.attr("data-state", "still")
+        gifImage.addClass("gifState")
+
+        gifDiv.append(p);
+        gifDiv.append(gifImage);
+
+        $("#gif-view").append(gifDiv);
+
+        // event listener that assigns a variable state the value of the data-state attribute of the button clicked
+        // if the state is still, the gif will animate, if the state is animate, the gif will stop
+        $(".gifState").on("click", function() {
+    
+          var state = $(this).attr("data-state");
+    
+          if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+          }
+          else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+          }
+    
+        });
+
+      }
 
 
     });
