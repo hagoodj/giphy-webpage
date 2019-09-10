@@ -1,20 +1,32 @@
-var gifs = ["test button"];
+var gifs = ["dog"];
 
+// Captures the gif name from the data-attribute
 function displayGif() {
 
     var userGif =  $(this).attr("data-name")
-    console.log(userGif);
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userGif + "&limit=1&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
+
+    // Creates AJAX call for the specific gif button being clicked
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+
+
+
+    });
 
 };
 
 // Function for displaying gif buttons
 function renderButtons() {
 
-    // Deletes the gifs prior to adding new movies
+    // Deletes the gifs prior to adding new gifs
     // (this is necessary otherwise you will have repeat buttons)
     $("#buttons-view").empty();
 
-    // Loops through the array of movies
+    // Loops through the array of gifs
     for (var i = 0; i < gifs.length; i++) {
 
         // Then dynamicaly generates buttons for each gif in the array
@@ -46,7 +58,7 @@ $("#add-gif").on("click", function(event) {
 
 });
 
-// Adding click event listeners to all elements with a class of "movie"
+// Adding click event listeners to all elements with a class of "gif"
 $(document).on("click", ".gif", displayGif);
 
 // Calling the renderButtons function to display the intial buttons
