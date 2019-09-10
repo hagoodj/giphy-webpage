@@ -1,6 +1,6 @@
 var gifs = ["test button"];
 
-// Function for displaying gifs
+// Function for displaying gif buttons
 function renderButtons() {
 
     // Deletes the gifs prior to adding new movies
@@ -34,6 +34,9 @@ $("#add-gif").on("click", function(event) {
     // The gif from the textbox is then added to our array
     gifs.push(gif);
     console.log(gifs);
+
+    // Calling renderButtons which handles the processing of our gif array
+    renderButtons();
 
 });
 
