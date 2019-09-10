@@ -4,7 +4,7 @@ var gifs = ["dog"];
 function displayGif() {
 
     var userGif =  $(this).attr("data-name")
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userGif + "&limit=1&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userGif + "&limit=2&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4";
 
     // Creates AJAX call for the specific gif button being clicked
     $.ajax({
@@ -35,6 +35,8 @@ function displayGif() {
 
         $("#gif-view").append(gifDiv);
 
+      }
+
         // event listener that assigns a variable state the value of the data-state attribute of the button clicked
         // if the state is still, the gif will animate, if the state is animate, the gif will stop
         $(".gifState").on("click", function() {
@@ -52,7 +54,7 @@ function displayGif() {
     
         });
 
-      }
+      
 
 
     });
