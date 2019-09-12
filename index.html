@@ -10,13 +10,19 @@
 
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
   <title>Giphy Webpage</title>
 </head>
 
 <body>
 
+    <audio controls>
+        <source src="./assets/images/office.MP3" type="audio/mpeg">
+    </audio>
+
     <div class = "jumbotron">
-        <div class = "row justify-content-center"><h1 class="display-4">Gifs!</h1></div>
+        <div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>
         <form id="gif-form">
             <div class = "row justify-content-center"><label for="gif-input">Add a Gif Category</label></div>
             <div class = "row justify-content-center"><input type="text" id="gif-input"><br></div><br>
@@ -25,8 +31,8 @@
     </div>
 
     <div class = "container">
-        <div id = "buttons-view"></div>
-        <div id = "gif-view"></div>
+        <div class = "row justify-content-center" id = "buttons-view"></div>
+        <div class = "row justify-content-center" id = "gif-view"></div>
     </div>
 
     <!-- jQuery -->
