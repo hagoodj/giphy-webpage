@@ -3,8 +3,10 @@ var gifs = ["Dwight Schrute", "Michael Scott", "Jim Halpert", "Jim and Pam", "Th
 // Captures the gif name from the data-attribute
 function displayGif() {
 
+  $("#gif-view").empty();
+
     var userGif =  $(this).attr("data-name")
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4&limit=20&q=" + userGif;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4&limit=10&q=" + userGif;
 
     // Creates AJAX call for the specific gif button being clicked
     $.ajax({
@@ -38,7 +40,7 @@ function displayGif() {
 
       }
 
-      // event listener that assigns a variable state the value of the data-state attribute of the button clicked
+      // event listener that assigns a variable 'state' the value of the data-state attribute of the button clicked
       // if the state is still, the gif will animate, if the state is animate, the gif will stop
       $(".gifState").on("click", function() {
   
@@ -62,7 +64,7 @@ function displayGif() {
 // Function for displaying gif buttons
 function renderButtons() {
 
-    // Deletes the gifs prior to adding new gifs
+    // Deletes the gif buttons prior to adding new gifs
     // (this is necessary otherwise you will have repeat buttons)
     $("#buttons-view").empty();
     $("#gif-view").empty();
@@ -106,9 +108,12 @@ $(document).on("click", ".gif", displayGif);
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
 
+ 
 
-// function([string1, string2],target id,[color1,color2])    
-consoleText(['The Office.'], 'text',['white']);
+
+
+// animation
+consoleText(['The Office. '], 'text',['white']);
 
 function consoleText(words, id, colors) {
   if (colors === undefined) colors = ['#fff'];
